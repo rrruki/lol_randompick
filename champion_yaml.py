@@ -1,6 +1,7 @@
 # -*- coding: shift_jis -*-
 
-# リーグ・オブ・レジェンドのチャンピオンをロールごとにリストアップして保存するためのPythonスクリプトを作成します。
+# リーグ・オブ・レジェンドのチャンピオンをロールごとにリストアップして保存するためのPythonスクリプトを再度実行します。
+import yaml
 
 # 各ロールごとのチャンピオンリストを辞書形式で作成
 lol_champions_by_role = {
@@ -41,13 +42,9 @@ lol_champions_by_role = {
     ]
 }
 
-# データをテキストファイルに書き込む
-file_path = "C:\make_pro\lol_randompick\lol_champions_by_role.txt"
-with open(file_path, "w") as file:
-    for role, champions in lol_champions_by_role.items():
-        file.write(f"{role}:\n")
-        for champion in champions:
-            file.write(f"  - {champion}\n")
-        file.write("\n")
+# YAMLフォーマットでファイルに書き出し
+yaml_file_path = "C:\make_pro\lol_randompick\lol_champions_by_role.yaml"
+with open(yaml_file_path, "w") as yaml_file:
+    yaml.dump(lol_champions_by_role, yaml_file, allow_unicode=True, sort_keys=False)
 
-file_path
+yaml_file_path
